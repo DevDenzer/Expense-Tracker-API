@@ -41,6 +41,17 @@ def get_total_expenses():
 
     return total if total else 0
 
+def get_all_expenses():
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT category, amount FROM expenses")
+    rows = cursor.fetchall()
+
+    conn.close()
+
+    return rows
+
 if __name__ == "__main__":
     create_table()
     print("Table successfully created")
