@@ -60,6 +60,18 @@ def get_all_expenses():
 
     return rows
 
+def update_expense(expense_id, new_category, new_amount):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "UPDATE expenses SET category = ?, amount = ? WHERE id = ?",
+        (new_category, new_amount, expense_id)
+    )
+
+    conn.commit()
+    conn.close()
+
 if __name__ == "__main__":
     create_table()
     print("Table successfully created")

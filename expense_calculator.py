@@ -1,5 +1,5 @@
 from expense_model import Expense
-from database import create_table, insert_expense, get_total_expenses, get_all_expenses, delete_expense
+from database import create_table, insert_expense, get_total_expenses, get_all_expenses, delete_expense, update_expense
 print("Program started")
 def add_expense():
     while True:
@@ -45,6 +45,21 @@ def view_total_expenses():
     total = get_total_expenses()
     print(f"\nTotal expenses: ${total:.2f}")
 
+def update_expense_cli():
+    view_all_expenses()
+
+    try:
+        expense_id = int(input("Enter the ID of the expense you would like to update: "))
+        new_category = input("Enter the new category: ")
+        new_amount = float(input("Enter the new amount: "))
+
+        update_expense(expense_id, new_category, new_amount)
+
+        print("Expense updated.\n")
+
+    except ValueError:
+        print("Invalid input. Please retry.")
+
 def main():
     create_table()
 
@@ -58,21 +73,29 @@ def main():
         print("2. View All Expenses")
         print("3. View Remaining Balance")
         print("4. Delete Expense")
-        print("5. Exit")
+        print("5. Update Expense")
+        print("6. Exit")
 
         choice = input("Choose an option: ")
 
         if choice == "1":
             add_expense()
+
         elif choice == "2":
             view_all_expenses()
+
         elif choice == "3":
             total = get_total_expenses()
             remaining = income - total
             print(f"\nRemaining Balance: ${remaining:.2f}")
+
         elif choice == "4":
             delete_expense_cli()
+
         elif choice == "5":
+            update_expense_cli()
+
+        elif choice == "6":
             print("\n=== Summary (from Database) ===")
             all_expenses = get_all_expenses()
             print(f"Monthly Income: ${income:.2f}")
@@ -84,6 +107,7 @@ def main():
                     print("Warning: You are overspending.")
             print("Exiting program. Goodbye!")
             break
+        
         else:
             print("Invalid option. Please try again.")
 
