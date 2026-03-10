@@ -16,11 +16,16 @@ This repository contains my foundational python practice as well as general deve
 - Created expense tables
 - Inserted sample rows
 
+### API Endpoints
+GET /expenses
+POST /expenses
+
 #### Files
 - day1_hello.py - basic testing script
 - expense_calculator.py - basic expense calculator
 - sql_practice.py - basic SQLite database
 - database.py - SQL database used in expense calculator
+- api.py - FastAPI backend for expense calculator
 
 ### Goals
 - Strengthen Python fundamentals
