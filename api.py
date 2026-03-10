@@ -1,5 +1,10 @@
 from fastapi import FastAPI
-from database import get_all_expenses, insert_expense
+from database import  (
+    get_all_expenses,
+    insert_expense,
+    delete_expense,
+    update_expense
+)
 
 app = FastAPI()
 
@@ -29,6 +34,27 @@ def create_expense(category: str, amount: float):
 
     return {
         "message": "Expense added successfully",
+        "category": category,
+        "amount": amount
+    }
+
+@app.delete("/expenses/{expense_id}")
+def delete_expense_endpoint(expense_id: int):
+
+    delete_expense(expense_id)
+
+    return {
+        "message": f"Expense {expense_id} deleted successfully"
+    }
+
+@app.put("/expenses/{expense_id}")
+def update_expense_endpoint(expense_id: int, category: str, amount: float):
+
+    update_expense(expense_id, category, amount)
+
+    return {
+        "message": "Expense updated successfully",
+        "id": expense_id,
         "category": category,
         "amount": amount
     }
