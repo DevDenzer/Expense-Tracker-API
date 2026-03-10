@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from database import get_all_expenses
+from database import get_all_expenses, insert_expense
 
 app = FastAPI()
 
@@ -21,3 +21,14 @@ def read_expenses():
         })
 
     return result
+
+@app.post("/expenses")
+def create_expense(category: str, amount: float):
+
+    insert_expense(category, amount)
+
+    return {
+        "message": "Expense added successfully",
+        "category": category,
+        "amount": amount
+    }
