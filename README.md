@@ -21,26 +21,26 @@ This application allows users to create, view, update, and delete expenses while
 - Git/Github
 
 ## API Endpoints
-GET /expenses
-POST /expenses
-PUT /expenses/{id}
-DELETE /expenses/{id}
+- GET /expenses
+- POST /expenses
+- PUT /expenses/{id}
+- DELETE /expenses/{id}
 
 ## Running the Project
 
-- install dependencies:
-    pip install fastapi uvicorn
+- Install dependencies:
+pip install fastapi uvicorn
 
 - Run the API server:
-    python -m uvicorn api:app --reload
+python -m uvicorn api:app --reload
 
-- Open the interactive API docs
-    https://127.0.0.1:800/docs
+- Open the interactive API docs:
+https://127.0.0.1:800/docs
 
 ### Project Files
-api.py - FastAPI backend
-database.py - Database connection and queries
-expense_calculator.py - CLI expense calculator
+- api.py: FastAPI backend
+- database.py: Database connection and queries
+- expense_calculator.py: CLI expense calculator
 
 #### Development Goals
 - Strengthen Python fundamentals
