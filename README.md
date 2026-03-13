@@ -1,33 +1,49 @@
-# Python Foundations
+# Expense Tracker API
 
-This repository contains my foundational python practice as well as general development skills
+This Python backend project began as a CLI expense calculator and later expanded into a REST API using FastAPI
 
-## Projects
+This application allows users to create, view, update, and delete expenses while storing data in a SQLite database
 
-### Expense Calculator
+## Features
 - CLI-based monthly expense calculator
 - Handles income and multiple expense categories
 - Calculates remaining balance
-- Uses formatted output
 - Full CRUD operations
+- SQLite database integration
+- FastAPI REST API
+- Interactive API documentation
 
-### SQL Practice
-- Created SQLite database
-- Created expense tables
-- Inserted sample rows
+## Tech Stack
+- Python
+- SQLite
+- FastAPI
+- Uvicorn
+- Git/Github
 
-### API Endpoints
+## API Endpoints
 GET /expenses
 POST /expenses
+PUT /expenses/{id}
+DELETE /expenses/{id}
 
-#### Files
-- day1_hello.py - basic testing script
-- expense_calculator.py - basic expense calculator
-- sql_practice.py - basic SQLite database
-- database.py - SQL database used in expense calculator
-- api.py - FastAPI backend for expense calculator
+## Running the Project
 
-### Goals
+- install dependencies:
+    pip install fastapi uvicorn
+
+- Run the API server:
+    python -m uvicorn api:app --reload
+
+- Open the interactive API docs
+    https://127.0.0.1:800/docs
+
+### Project Files
+api.py - FastAPI backend
+database.py - Database connection and queries
+expense_calculator.py - CLI expense calculator
+
+#### Development Goals
 - Strengthen Python fundamentals
 - Practice Git workflow
-- Build small complete CLI tools
+- Learn database interaction with SQLite
+- Build small complete backend tools
