@@ -1,5 +1,5 @@
-from expense_model import Expense
-from database import create_table, insert_expense, get_total_expenses, get_all_expenses, delete_expense, update_expense
+from app.models import Expense
+from app.database import create_table, insert_expense, get_total_expenses, get_all_expenses, delete_expense, update_expense
 print("Program started")
 
 def get_float_input(prompt):

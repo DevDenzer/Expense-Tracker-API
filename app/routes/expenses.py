@@ -1,18 +1,13 @@
-from fastapi import FastAPI
-from database import  (
-    get_all_expenses,
-    insert_expense,
-    delete_expense,
-    update_expense
-)
+from fastapi import APIRouter
+from app.database import *
 
-app = FastAPI()
+router = APIRouter()
 
-@app.get("/")
+@router.get("/")
 def home():
     return {"message": "Expense Tracker API is running!"}
 
-@app.get("/expenses")
+@router.get("/expenses")
 def read_expenses():
     expenses = get_all_expenses()
 
@@ -27,7 +22,7 @@ def read_expenses():
 
     return result
 
-@app.post("/expenses")
+@router.post("/expenses")
 def create_expense(category: str, amount: float):
 
     insert_expense(category, amount)
@@ -38,7 +33,7 @@ def create_expense(category: str, amount: float):
         "amount": amount
     }
 
-@app.delete("/expenses/{expense_id}")
+@router.delete("/expenses/{expense_id}")
 def delete_expense_endpoint(expense_id: int):
 
     delete_expense(expense_id)
@@ -47,7 +42,7 @@ def delete_expense_endpoint(expense_id: int):
         "message": f"Expense {expense_id} deleted successfully"
     }
 
-@app.put("/expenses/{expense_id}")
+@router.put("/expenses/{expense_id}")
 def update_expense_endpoint(expense_id: int, category: str, amount: float):
 
     update_expense(expense_id, category, amount)

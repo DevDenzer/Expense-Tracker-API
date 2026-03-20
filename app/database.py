@@ -1,7 +1,12 @@
 import sqlite3
+import os
+
+DB_PATH = os.path.join(os.path.dirname(__file__), "..", "expenses.db")
+
+conn = sqlite3.connect(DB_PATH)
 
 def get_connection():
-    return sqlite3.connect("expenses.db")
+    return sqlite3.connect(DB_PATH)
 
 def create_table():
     conn = get_connection()
