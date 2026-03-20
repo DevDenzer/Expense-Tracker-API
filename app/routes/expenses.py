@@ -22,15 +22,17 @@ def read_expenses():
 
     return result
 
-@router.post("/expenses")
-def create_expense(category: str, amount: float):
+from app.models import Expense
 
-    insert_expense(category, amount)
+@router.post("/expenses")
+def create_expense(expense: Expense):
+
+    insert_expense(expense.category, expense.amount)
 
     return {
         "message": "Expense added successfully",
-        "category": category,
-        "amount": amount
+        "category": expense.category,
+        "amount": expense.amount
     }
 
 @router.delete("/expenses/{expense_id}")
