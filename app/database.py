@@ -35,7 +35,7 @@ def insert_expense(category, amount):
     conn.commit()
     conn.close()
 
-def delete_expense(expense_id):
+def delete_expense_db(expense_id):
     conn = get_connection()
     cursor = conn.cursor()
 
@@ -73,7 +73,7 @@ def get_all_expenses():
 
     return expenses
 
-def update_expense(expense_id, new_category, new_amount):
+def update_expense_db(expense_id, new_category, new_amount):
     conn = get_connection()
     cursor = conn.cursor()
 
