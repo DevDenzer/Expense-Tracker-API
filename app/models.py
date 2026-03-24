@@ -4,6 +4,10 @@ class Expense(BaseModel):
     category: str
     amount: float
 
+class ExpenseResponse(BaseModel):
+    id: int
+    category: str
+    amount: float
     
 if __name__ == "__main__":
     test_expense = Expense("Rent", 900)

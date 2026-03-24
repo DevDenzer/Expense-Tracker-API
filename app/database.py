@@ -63,7 +63,15 @@ def get_all_expenses():
 
     conn.close()
 
-    return rows
+    expenses = []
+    for row in rows:
+        expenses.append({
+            "id": row[0],
+            "category": row[1],
+            "amount": row[2]
+        })
+
+    return expenses
 
 def update_expense(expense_id, new_category, new_amount):
     conn = get_connection()

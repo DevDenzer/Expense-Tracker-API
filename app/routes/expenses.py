@@ -1,5 +1,7 @@
 from fastapi import APIRouter
 from app.database import *
+from typing import List
+from app.models import Expense, ExpenseResponse
 
 router = APIRouter()
 
@@ -7,22 +9,10 @@ router = APIRouter()
 def home():
     return {"message": "Expense Tracker API is running!"}
 
-@router.get("/expenses")
+@router.get("/expenses", response_model=List[ExpenseResponse])
 def read_expenses():
-    expenses = get_all_expenses()
+    return get_all_expenses()
 
-    result = []
-
-    for exp_id, category, amount in expenses:
-        result.append({
-            "id": exp_id,
-            "category": category,
-            "amount": amount
-        })
-
-    return result
-
-from app.models import Expense
 
 @router.post("/expenses")
 def create_expense(expense: Expense):
